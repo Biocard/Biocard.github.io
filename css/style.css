@@ -1,0 +1,511 @@
+/* 全局样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Microsoft YaHei', 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f7f8fa;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 头部样式 */
+header {
+    background: linear-gradient(135deg, #234476 0%, #1a5f9f 100%);
+    color: #fff;
+    padding: 20px 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 600;
+    padding-bottom: 10px;
+}
+
+nav {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 5px 0;
+    transition: opacity 0.3s;
+    position: relative;
+}
+
+nav a:hover {
+    opacity: 0.8;
+}
+
+nav a.active {
+    border-bottom: 2px solid #fff;
+}
+
+/* 主要内容区域 */
+main {
+    min-height: calc(100vh - 200px);
+    padding: 40px 0;
+}
+
+/* 页面标题 */
+.page-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.page-header h2 {
+    font-size: 2.5rem;
+    color: #234476;
+    margin-bottom: 10px;
+}
+
+.page-header p {
+    font-size: 1.1rem;
+    color: #666;
+}
+
+/* Hero区域 */
+.hero {
+    text-align: center;
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    border-radius: 10px;
+    margin-bottom: 50px;
+}
+
+.hero h2 {
+    font-size: 2.8rem;
+    color: #234476;
+    margin-bottom: 15px;
+}
+
+.hero .subtitle {
+    font-size: 1.3rem;
+    color: #555;
+}
+
+/* 研究方向卡片 */
+.research-areas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin: 30px 0;
+}
+
+.area-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.area-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.area-card h3 {
+    color: #234476;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.area-card p {
+    color: #666;
+    line-height: 1.8;
+}
+
+/* 新闻列表 */
+.news-list {
+    list-style: none;
+    margin: 30px 0;
+}
+
+.news-list li {
+    background: #fff;
+    padding: 25px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s;
+}
+
+.news-list li:hover {
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.news-list li strong {
+    color: #234476;
+    font-size: 1.2rem;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.news-list li .date {
+    color: #888;
+    font-size: 0.95rem;
+    margin-left: 10px;
+}
+
+.news-list li .summary {
+    color: #555;
+    margin-top: 10px;
+    line-height: 1.8;
+}
+
+/* 完整新闻列表 */
+.news-list-full {
+    margin: 30px 0;
+}
+
+.news-item {
+    background: #fff;
+    padding: 30px;
+    margin-bottom: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s;
+}
+
+.news-item:hover {
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.news-item h3 {
+    color: #234476;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.news-item .meta {
+    color: #888;
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.news-item .content {
+    color: #555;
+    line-height: 1.8;
+    margin-top: 15px;
+}
+
+/* 成员网格 */
+.members {
+    margin: 40px 0;
+}
+
+.members h3 {
+    font-size: 1.8rem;
+    color: #234476;
+    margin: 40px 0 20px 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.members-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.member-card {
+    background: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.member-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.member-card .avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    margin: 0 auto 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.member-card h4 {
+    color: #234476;
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+}
+
+.member-card .role {
+    color: #888;
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+}
+
+.member-card .bio {
+    color: #555;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+/* 工作成果 */
+.filter-tabs {
+    display: flex;
+    gap: 10px;
+    margin: 30px 0;
+    flex-wrap: wrap;
+}
+
+.tab-btn {
+    padding: 10px 20px;
+    border: 2px solid #234476;
+    background: #fff;
+    color: #234476;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+.tab-btn:hover {
+    background: #f0f4f8;
+}
+
+.tab-btn.active {
+    background: #234476;
+    color: #fff;
+}
+
+.works-list {
+    margin: 30px 0;
+}
+
+.work-item {
+    background: #fff;
+    padding: 25px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s;
+}
+
+.work-item:hover {
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.work-item h3 {
+    color: #234476;
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+.work-item .authors {
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.work-item .venue {
+    color: #888;
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+}
+
+.work-item .tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.tag {
+    background: #e8f0f8;
+    color: #234476;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.85rem;
+}
+
+.work-item .links {
+    margin-top: 15px;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.work-item .links a {
+    color: #2274A5;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.work-item .links a:hover {
+    text-decoration: underline;
+}
+
+/* 快速链接 */
+.quick-links {
+    margin: 50px 0;
+}
+
+.quick-links h2 {
+    text-align: center;
+    font-size: 2rem;
+    color: #234476;
+    margin-bottom: 30px;
+}
+
+.links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.link-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: block;
+}
+
+.link-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.link-card h3 {
+    color: #234476;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.link-card p {
+    color: #666;
+}
+
+/* 按钮 */
+.btn {
+    display: inline-block;
+    background: #2274A5;
+    color: #fff;
+    padding: 12px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.3s;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btn:hover {
+    background: #185a85;
+}
+
+.text-center {
+    text-align: center;
+    margin-top: 30px;
+}
+
+/* 页脚 */
+footer {
+    background: #fff;
+    border-top: 1px solid #e0e0e0;
+    padding: 30px 0;
+    margin-top: 60px;
+    text-align: center;
+    color: #888;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    nav {
+        gap: 15px;
+    }
+
+    nav a {
+        font-size: 0.9rem;
+    }
+
+    .hero h2 {
+        font-size: 2rem;
+    }
+
+    .hero .subtitle {
+        font-size: 1.1rem;
+    }
+
+    .page-header h2 {
+        font-size: 2rem;
+    }
+
+    .research-areas,
+    .members-grid,
+    .links-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .container {
+        padding: 0 15px;
+    }
+
+    main {
+        padding: 20px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.2rem;
+    }
+
+    nav {
+        gap: 10px;
+    }
+
+    nav a {
+        font-size: 0.85rem;
+    }
+
+    .hero {
+        padding: 40px 15px;
+    }
+
+    .hero h2 {
+        font-size: 1.6rem;
+    }
+}

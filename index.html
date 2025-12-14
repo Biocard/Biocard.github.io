@@ -3,223 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>黑客帝国 - 数字雨</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background: #000;
-            overflow: hidden;
-            font-family: "Courier New", monospace;
-            height: 100vh;
-            width: 100vw;
-        }
-
-        #input-container {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 1000;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        #text-input, #background-text-input {
-            background: rgba(0, 0, 0, 0.8);
-            border: 2px solid #00ff41;
-            color: #00ff41;
-            font-size: 18px;
-            padding: 10px 20px;
-            width: 400px;
-            font-family: "Courier New", monospace;
-            text-shadow: 0 0 5px #00ff41;
-            outline: none;
-        }
-
-        #text-input::placeholder, #background-text-input::placeholder {
-            color: #00ff4166;
-        }
-
-        #matrix {
-            position: relative;
-            width: 100%;
-            height: 100%;
-        }
-
-        .column {
-            position: absolute;
-            top: -100%;
-            color: #00ff41;
-            font-size: 24px;
-            text-shadow: 0 0 5px #00ff41;
-            line-height: 1.4;
-            animation: fall linear infinite;
-            opacity: 0;
-        }
-
-        .user-text {
-            position: absolute;
-            top: -100%;
-            color: #ffffff;
-            font-size: 32px;
-            text-shadow: 0 0 10px #ffffff, 0 0 20px #00ff41, 0 0 30px #00ff41;
-            line-height: 1.4;
-            white-space: nowrap;
-            animation: fall linear;
-            opacity: 0;
-            font-weight: bold;
-        }
-
-        @keyframes fall {
-            0% {
-                top: -100%;
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                top: 100%;
-                opacity: 0;
-            }
-        }
-
-        .column .char {
-            display: block;
-        }
-    </style>
+    <title>课题组主页 - 科研进展</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div id="input-container">
-        <input type="text" id="background-text-input" placeholder="修改背景文字（默认：我爱琪娃子）" value="我爱琪娃子">
-        <input type="text" id="text-input" placeholder="输入文字，按回车让它落下...">
-    </div>
-    <div id="matrix"></div>
+    <header>
+        <div class="container">
+            <h1>课题组主页</h1>
+            <nav>
+                <a href="index.html" class="active">主页</a>
+                <a href="news.html">新闻动态</a>
+                <a href="members.html">成员介绍</a>
+                <a href="works.html">工作成果</a>
+            </nav>
+        </div>
+    </header>
 
-    <script>
-        const matrix = document.getElementById("matrix");
-        const textInput = document.getElementById("text-input");
-        const backgroundTextInput = document.getElementById("background-text-input");
-        let backgroundText = "我爱琪娃子";
-        const columns = [];
-        const columnSpacing = 80; // 增加列间距，让密度更稀疏
-        let columnCount = Math.floor(window.innerWidth / columnSpacing);
+    <main class="container">
+        <section class="hero">
+            <h2>欢迎来到我们的课题组</h2>
+            <p class="subtitle">致力于人工智能、机器学习与数据科学的前沿研究</p>
+        </section>
 
-        function getBackgroundText() {
-            const text = backgroundTextInput.value.trim();
-            return text || "我爱琪娃子";
-        }
+        <section class="intro">
+            <h2>研究方向</h2>
+            <div class="research-areas">
+                <div class="area-card">
+                    <h3>机器学习</h3>
+                    <p>深度学习、强化学习、迁移学习等前沿算法研究</p>
+                </div>
+                <div class="area-card">
+                    <h3>数据科学</h3>
+                    <p>大数据分析、数据挖掘、知识图谱构建与应用</p>
+                </div>
+                <div class="area-card">
+                    <h3>人工智能应用</h3>
+                    <p>计算机视觉、自然语言处理、智能推荐系统</p>
+                </div>
+            </div>
+        </section>
 
-        function createColumn(index) {
-            const column = document.createElement("div");
-            column.className = "column";
-            column.style.left = (index * columnSpacing) + "px";
-            
-            const currentBackgroundText = getBackgroundText();
-            
-            // 计算需要多少个单元来填满屏幕
-            const charHeight = 24 * 1.4;
-            const unitsNeeded = Math.ceil(window.innerHeight / charHeight) + 2;
-            
-            // 构建文本：每个字符单独一行，中间有空行（空格）
-            for (let i = 0; i < unitsNeeded; i++) {
-                // 添加背景文字的每个字符，每个字符单独一行
-                for (let j = 0; j < currentBackgroundText.length; j++) {
-                    const char = document.createElement("span");
-                    char.className = "char";
-                    char.textContent = currentBackgroundText[j];
-                    column.appendChild(char);
-                }
-                // 添加几个空行（使用&nbsp;确保可见）
-                for (let k = 0; k < 3; k++) {
-                    const space = document.createElement("span");
-                    space.className = "char";
-                    space.innerHTML = "&nbsp;";
-                    column.appendChild(space);
-                }
-            }
-            
-            matrix.appendChild(column);
-            columns.push(column);
-            
-            const duration = Math.random() * 8000 + 6000;
-            const delay = Math.random() * 5000;
-            column.style.animationDuration = duration + "ms";
-            column.style.animationDelay = delay + "ms";
-            
-            column.addEventListener("animationend", () => {
-                column.style.top = "-100%";
-                column.style.animationDelay = "0ms";
-                column.style.animationDuration = (Math.random() * 8000 + 6000) + "ms";
-            });
-        }
+        <section class="progress">
+            <h2>近期科研进展</h2>
+            <ul id="recent-news" class="news-list">
+                <!-- 由JS自动填充 -->
+            </ul>
+            <div class="text-center">
+                <a href="news.html" class="btn">查看全部新闻</a>
+            </div>
+        </section>
 
-        function recreateColumns() {
-            // 清除所有现有的列
-            columns.forEach(col => col.remove());
-            columns.length = 0;
-            
-            // 重新创建所有列
-            columnCount = Math.floor(window.innerWidth / columnSpacing);
-            for (let i = 0; i < columnCount; i++) {
-                createColumn(i);
-            }
-        }
+        <section class="quick-links">
+            <h2>快速导航</h2>
+            <div class="links-grid">
+                <a href="members.html" class="link-card">
+                    <h3>团队成员</h3>
+                    <p>了解我们的研究团队</p>
+                </a>
+                <a href="works.html" class="link-card">
+                    <h3>研究成果</h3>
+                    <p>查看我们的论文与成果</p>
+                </a>
+                <a href="news.html" class="link-card">
+                    <h3>最新动态</h3>
+                    <p>关注我们的科研进展</p>
+                </a>
+            </div>
+        </section>
+    </main>
 
-        function createUserText(text) {
-            const userText = document.createElement("div");
-            userText.className = "user-text";
-            userText.textContent = text + " ❤";
-            const randomLeft = Math.random() * (window.innerWidth - 200);
-            userText.style.left = randomLeft + "px";
-            userText.style.animationDuration = "8000ms";
-            matrix.appendChild(userText);
-            
-            userText.addEventListener("animationend", () => {
-                userText.remove();
-            });
-        }
+    <footer>
+        <div class="container">
+            <p>Copyright © 2025 课题组 | 联系我们: example@university.edu.cn</p>
+        </div>
+    </footer>
 
-        textInput.addEventListener("keypress", (e) => {
-            if (e.key === "Enter" && textInput.value.trim()) {
-                createUserText(textInput.value);
-                textInput.value = "";
-            }
-        });
-
-        // 监听背景文字输入框的变化
-        backgroundTextInput.addEventListener("keypress", (e) => {
-            if (e.key === "Enter") {
-                backgroundText = getBackgroundText();
-                recreateColumns();
-            }
-        });
-
-        backgroundTextInput.addEventListener("blur", () => {
-            backgroundText = getBackgroundText();
-            recreateColumns();
-        });
-
-        for (let i = 0; i < columnCount; i++) {
-            createColumn(i);
-        }
-
-        window.addEventListener("resize", () => {
-            const newColumnCount = Math.floor(window.innerWidth / columnSpacing);
-            if (newColumnCount !== columnCount) {
-                recreateColumns();
-            }
-        });
-    </script>
+    <script src="js/main.js"></script>
 </body>
 </html>
